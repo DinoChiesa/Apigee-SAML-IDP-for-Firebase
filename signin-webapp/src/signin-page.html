@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portal Sign-In</title>
+    <link rel="stylesheet" href="signin/css/main.css"/>
+    <script charset="utf-8">
+     // These get filled in by the proxy
+     const identityPlatformConfig = {
+       apiKey : "{propertyset.settings.fbase_apiKey}",
+       authDomain : "{propertyset.settings.fbase_authDomain}"
+     };
+    </script>
+  </head>
+
+  <body>
+
+    <div class='maincontainer'>
+      <div class='flexboxcontainer'>
+        <form role='form' id='form-signin' accept-charset='UTF-8'>
+          <div class='button-group'>
+            <button class='when-no-signedin btn btn-sm btn-outline-primary' id='btn-signin' type='submit'>Sign In</button>
+            <button class='when-signedin btn btn-sm btn-outline-primary' id='btn-signout' type='submit'>Sign Out</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="signin/js/main.js" charset="utf-8"></script>
+  </body>
+
+</html>

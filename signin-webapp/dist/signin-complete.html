@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign-In Complete</title>
+    <link rel="stylesheet" href="signin/css/main.css"/>
+  </head>
+
+  <body>
+    <div class='maincontainer'>
+      <div class='flexboxcontainer'>
+        <form role='form' method="post" action="{session.ACSURL}">
+          <input type="hidden" name="SAMLResponse" value="{SAMLResponse}" />
+          <div class='button-group'>
+            <button class='when-no-signedin btn btn-sm btn-outline-primary' id='btn-signin' type='submit'>Complete Sign In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script charset="utf-8">
+     document.addEventListener("DOMContentLoaded", (_event) => {
+       document.forms[0].submit();
+     });
+    </script>
+  </body>
+
+</html>

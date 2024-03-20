@@ -1,0 +1,9 @@
+<Javascript name="JS-Shred-Session">
+  <Source><![CDATA[
+  var session = JSON.parse(context.getVariable('session_payload'));
+  Object.keys(session).forEach(function(key){
+    context.setVariable('session.'+key, session[key]);
+  });
+  ]]>
+  </Source>
+</Javascript>

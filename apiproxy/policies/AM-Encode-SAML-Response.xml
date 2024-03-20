@@ -1,0 +1,12 @@
+<AssignMessage name='AM-Encode-SAML-Response'>
+  <AssignVariable>
+    <Name>xmlcontent</Name>
+    <Ref>assertion.content</Ref>
+  </AssignVariable>
+  <!-- Compression is optional in the HTTP-POST binding. This SAML IDP does not
+       perform compression. -->
+  <AssignVariable>
+    <Name>SAMLResponse</Name>
+    <Template>{encodeBase64(xmlcontent)}</Template>
+  </AssignVariable>
+</AssignMessage>

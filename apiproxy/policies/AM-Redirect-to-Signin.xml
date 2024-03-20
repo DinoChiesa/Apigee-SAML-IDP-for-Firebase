@@ -1,0 +1,10 @@
+<AssignMessage name='AM-Redirect-to-Signin'>
+  <Set>
+    <Headers>
+      <Header
+          name='Location'>{client.scheme}://{request.header.host}{proxy.basepath}/signin#{session_id}</Header>
+    </Headers>
+    <Payload contentType='text/plain'>MOVED</Payload>
+    <StatusCode>302</StatusCode>
+  </Set>
+</AssignMessage>

@@ -1,0 +1,6 @@
+<AssignMessage name='AM-Decode-SAML-AuthnRequest'>
+  <AssignVariable>
+    <Name>saml_request_decoded</Name>
+    <Template>{decodeBase64(saml_request)}</Template>
+  </AssignVariable>
+</AssignMessage>

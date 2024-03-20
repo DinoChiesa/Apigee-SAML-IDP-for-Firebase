@@ -1,0 +1,7 @@
+<LookupCache name='CL-Session'>
+  <Scope>Application</Scope>
+  <CacheKey>
+    <KeyFragment ref='request.queryparam.session' />
+  </CacheKey>
+  <AssignTo>session_payload</AssignTo>
+</LookupCache>

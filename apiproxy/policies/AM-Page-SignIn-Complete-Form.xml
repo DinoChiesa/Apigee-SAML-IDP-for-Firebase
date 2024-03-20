@@ -1,0 +1,17 @@
+<AssignMessage name='AM-Page-SignIn-Complete-Form'>
+  <AssignVariable>
+    <Name>signin-complete-page-html-tmpl</Name>
+    <ResourceURL>jsc://signin-complete.html.txt</ResourceURL>
+  </AssignVariable>
+
+  <!-- resolve variable references in the HTML -->
+  <AssignVariable>
+    <Name>signin-complete-page-html</Name>
+    <Template ref='signin-complete-page-html-tmpl'/>
+  </AssignVariable>
+
+  <Set>
+    <Payload contentType='text/html'>{signin-complete-page-html}</Payload>
+    <StatusCode>200</StatusCode>
+  </Set>
+</AssignMessage>

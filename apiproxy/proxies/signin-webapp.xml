@@ -1,0 +1,105 @@
+<ProxyEndpoint name="signin-webapp">
+  <Description>a signin page. Intended for use with the Apigee Integrated Developer portal.</Description>
+  <HTTPProxyConnection>
+    <BasePath>/apigee-saml-idp/signin</BasePath>
+  </HTTPProxyConnection>
+
+  <DefaultFaultRule>
+    <AlwaysEnforce>true</AlwaysEnforce>
+    <Step>
+      <Name>AM-Inject-Proxy-Revision-Header</Name>
+    </Step>
+  </DefaultFaultRule>
+
+  <PreFlow name="PreFlow">
+    <Request>
+        <Step>
+          <Name>AM-Settings</Name>
+        </Step>
+    </Request>
+
+    <Response>
+      <Step>
+        <Name>AM-Clean-Request-Headers-From-Response</Name>
+      </Step>
+    </Response>
+  </PreFlow>
+
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>AM-Inject-Proxy-Revision-Header</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+
+  <Flows>
+    <Flow name="signin-page">
+      <Description>Renders the HTML</Description>
+      <Response>
+        <Step>
+          <Name>AM-Page-SignIn</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb == "GET") AND
+        (proxy.pathsuffix MatchesPath "/index.html" OR proxy.pathsuffix MatchesPath "/") </Condition>
+    </Flow>
+
+    <Flow name="page-logic">
+      <Description>delivers the JavaScript</Description>
+      <Response>
+        <Step>
+          <Name>AM-Page-Logic</Name>
+        </Step>
+      </Response>
+      <Condition>request.verb == "GET" AND (proxy.pathsuffix MatchesPath "/js/main.js")</Condition>
+    </Flow>
+
+    <Flow name="page-logic-map-for-in-browser-debugging">
+      <Description>This is the page-logic.js.map, which is used in Browser developer tools.</Description>
+      <Response>
+        <Step>
+          <Name>AM-Page-Logic-Map</Name>
+        </Step>
+      </Response>
+      <Condition>request.verb == "GET" AND (proxy.pathsuffix MatchesPath "/js/main.js.map")</Condition>
+    </Flow>
+
+    <Flow name="page-style">
+      <Description/>
+      <Response>
+        <Step>
+          <Name>AM-Page-Style</Name>
+        </Step>
+      </Response>
+      <Condition>request.verb == "GET" AND (proxy.pathsuffix MatchesPath "/css/main.css")</Condition>
+    </Flow>
+
+<!--
+   <Flow name="config">
+      <Description>delivers the configuration settings</Description>
+      <Response>
+        <Step>
+          <Name>AM-Page-Settings</Name>
+        </Step>
+      </Response>
+      <Condition>request.verb == "GET" AND (proxy.pathsuffix MatchesPath "/settings")</Condition>
+    </Flow>
+-->
+
+     <Flow name="unknown-request">
+      <Request>
+        <Step>
+          <Name>RF-HTML-Unknown-Request</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+
+  </Flows>
+
+  <RouteRule name="no-route"/>
+
+
+</ProxyEndpoint>

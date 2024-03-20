@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="apigee-saml-idp">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1426738035808</CreatedAt>
+    <Description>A proxy acting as a SAML facade on Firebase Authn</Description>
+    <DisplayName>Apigee SAML IDP</DisplayName>
+    <LastModifiedAt>1426889441952</LastModifiedAt>
+</APIProxy>

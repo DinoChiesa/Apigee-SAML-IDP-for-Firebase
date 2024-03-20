@@ -1,0 +1,16 @@
+<AssignMessage name='AM-Page-SignIn'>
+  <AssignVariable>
+    <Name>signin-page-html-tmpl</Name>
+    <ResourceURL>jsc://signin-page.html.txt</ResourceURL>
+  </AssignVariable>
+
+  <!-- resolve variable references in the HTML -->
+  <AssignVariable>
+    <Name>signin-page-html</Name>
+    <Template ref='signin-page-html-tmpl'/>
+  </AssignVariable>
+
+  <Set>
+    <Payload contentType='text/html'>{signin-page-html}</Payload>
+  </Set>
+</AssignMessage>
