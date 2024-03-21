@@ -134,7 +134,6 @@ There are some manual steps required to set up this example.
    follow the instructions in [the README for the webapp](./signin-webapp/README.md).
    Then, return here.
 
-
 5. Deploy the API Proxy:
    ```
    apigeecli apis create bundle -f apiproxy --name apigee-saml-idp -o $ORG --token $TOKEN
@@ -143,12 +142,12 @@ There are some manual steps required to set up this example.
 
 6. Create or select an API Developer Portal in Apigee
 
-7. Enable SAML Authentication. Provide the following:
+7. For the Developer portal, Enable SAML Authentication. Provide the following:
 
    | setting |  value |
    | ------ | ------ |
    | login endpoint | the endpoint where the API Proxy will be reached, including the proxy basepath, with `/login` appended.  Eg `https://my-apigee.com/apigee-saml-idp/login` |
-   | Entity ID | The login endpoint, dropping the `/login` suffix.  Eg,  Eg `https://my-apigee.com/apigee-saml-idp` |
+   | Entity ID | The login endpoint, dropping the `/login` suffix.  Eg, `https://my-apigee.com/apigee-saml-idp` |
    | certificate  | upload the certificate you created earlier. |
 
 

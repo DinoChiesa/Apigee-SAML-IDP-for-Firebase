@@ -15899,7 +15899,7 @@ __webpack_require__.r(__webpack_exports__);
 // ------------------------------------------------------------------
 //
 // created: Mon Mar 18 15:40:30 2024
-// last saved: <2024-March-19 15:11:15>
+// last saved: <2024-March-20 18:29:21>
 
 /* jshint esversion:9, node:true, strict:implied */
 /* global process, console, identityPlatformConfig, Buffer */
@@ -16053,8 +16053,13 @@ function maybeSubmitForm() {
 
 document.addEventListener("DOMContentLoaded", (_event) => {
   addFirebaseAuthChangeListener();
+  // at first, both buttons hidden
+  $sel("#btn-signin").classList.toggle("hidden", true);
   $sel("#btn-signin").addEventListener("click", onClickSignin);
-  $sel("#btn-signout").addEventListener("click", onClickSignout);
+  if ($sel("#btn-signout")) {
+    $sel("#btn-signout").classList.toggle("hidden", true);
+    $sel("#btn-signout").addEventListener("click", onClickSignout);
+  }
 
   waitFor(authIsReady, maybeSubmitForm);
 });
