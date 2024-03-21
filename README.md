@@ -2,7 +2,11 @@
 
 ## Summary
 
-This is an example Apigee API proxy that acts as a SAML IdP, using Google Cloud Identity platform as the back-end. This specifically works with the Apigee Integrated Developer Portal.  This has been tested in Apigee X.
+This is an example Apigee API proxy that acts as a SAML IdP, using Google Cloud
+Identity platform as the back-end. This specifically works with the Apigee
+Integrated Developer Portal.  This has been tested in Apigee X.
+
+For a video overview, see [here](https://youtu.be/O5oDMCbIT0I).
 
 ## Background
 
@@ -90,8 +94,11 @@ There are some manual steps required to set up this example.
        -o $ORG -e $ENV -t $TOKEN
    ```
 
-3. Set up your Google Cloud Identity Platform as desired, with the providers you want (for example Google signin).
-   Copy the APIKey and Auth Domain (eg `PROJECT-NAME.firebaseapp.com`)
+3. Set up your Google Cloud Identity Platform as desired, with the providers you
+   want (for example, Google signin, Okta, username/password, etc.).
+
+   Remember the APIKey and Auth Domain (eg `PROJECT-NAME.firebaseapp.com`) for
+   this Identity Platform setup.  You will need this in the next step.
 
 
 4. Modify the settings file
@@ -106,14 +113,18 @@ There are some manual steps required to set up this example.
    | `fbase_authDomain`  | the Firebase Auth domain (eg `PROJECT-NAME.firebaseapp.com`) |
 
 
-5. Build the web app. 
+5. Build the web app.
 
-   The SAML IdP depends on a webapp to support signin from the browser. The structure and logic for the webapp is 
-   in the [signin-webapp](./signin-webapp) diretory. It gets served from the signin Proxy endpoint. 
-   
-   To get the HTML, CSS, and JS that the webapp uses, into the API proxy, 
-   
-   
+   The SAML IdP depends on a simple webapp to support signin from the browser. The
+   structure and logic for the webapp is in the [signin-webapp](./signin-webapp)
+   diretory. It gets served from the signin Proxy endpoint. (More about that
+   later)
+
+   To get the HTML, CSS, and JS that the webapp uses, into the API proxy,
+   follow the instructions in [the README for the webapp](./signin-webapp/README.md).
+   Then, return here.
+
+
 5. Deploy the API Proxy:
    ```
    apigeecli apis create bundle -f apiproxy --name apigee-saml-idp -o $ORG --token $TOKEN
@@ -141,8 +152,9 @@ Click it, and you should be permitted to signin with Google Cloud Identity.
 
 ## Implementation Details
 
-I won't go into great detail decribing the implementation of the API Proxy. You can examine it to figure it out.
-But I will offer some highlights to get you oriented.
+I won't go into great detail decribing the implementation of the API Proxy. You
+can examine it to figure it out.  But I will offer some highlights to get you
+oriented.
 
 1. The API proxy has two proxy endpoints. The idp endpoint offers `/login` and
    `/logout` flows. This is the essense of the _restricted_ SAML IdP. The second
