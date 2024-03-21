@@ -106,6 +106,14 @@ There are some manual steps required to set up this example.
    | `fbase_authDomain`  | the Firebase Auth domain (eg `PROJECT-NAME.firebaseapp.com`) |
 
 
+5. Build the web app. 
+
+   The SAML IdP depends on a webapp to support signin from the browser. The structure and logic for the webapp is 
+   in the [signin-webapp](./signin-webapp) diretory. It gets served from the signin Proxy endpoint. 
+   
+   To get the HTML, CSS, and JS that the webapp uses, into the API proxy, 
+   
+   
 5. Deploy the API Proxy:
    ```
    apigeecli apis create bundle -f apiproxy --name apigee-saml-idp -o $ORG --token $TOKEN

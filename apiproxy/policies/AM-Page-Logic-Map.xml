@@ -1,7 +1,7 @@
 <AssignMessage name='AM-Page-Logic-Map'>
   <AssignVariable>
     <Name>page-logic-js-map</Name>
-    <ResourceURL>jsc://js/main.js.map.txt</ResourceURL>
+    <ResourceURL>jsc://js-main.js.map.txt</ResourceURL>
   </AssignVariable>
   <Set>
     <Payload contentType='application/json'>{page-logic-js-map}</Payload>

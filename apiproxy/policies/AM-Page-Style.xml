@@ -1,7 +1,7 @@
 <AssignMessage name='AM-Page-Style'>
   <AssignVariable>
     <Name>page-style-css</Name>
-    <ResourceURL>jsc://css/main.css.txt</ResourceURL>
+    <ResourceURL>jsc://css-main.css.txt</ResourceURL>
   </AssignVariable>
   <Set>
     <Payload contentType='text/css'>{page-style-css}</Payload>

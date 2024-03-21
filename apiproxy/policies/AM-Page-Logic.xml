@@ -1,7 +1,7 @@
 <AssignMessage name='AM-Page-Logic'>
   <AssignVariable>
     <Name>page-logic-js</Name>
-    <ResourceURL>jsc://js/main.js.txt</ResourceURL>
+    <ResourceURL>jsc://js-main.js.txt</ResourceURL>
   </AssignVariable>
   <Set>
     <Payload contentType='application/json'>{page-logic-js}</Payload>

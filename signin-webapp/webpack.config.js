@@ -142,39 +142,34 @@ function makeConfig(mode) {
           //const logger = compiler.getInfrastructureLogger(PLUGIN_NAME);
           // logger.info("info from compiler");
           compiler.hooks.afterEmit.tap(PLUGIN_NAME, (compilation) => {
-            // const util = require("util");
-            // console.log(util.format(compilation));
             const logger = compilation.getLogger(PLUGIN_NAME);
-            logger.info(`${PLUGIN_NAME} afterEmit entry`);
-
             const maybeCreateDir = (dirPath) => {
               if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath);
               }
             };
             const srcDir = compilation.compiler.outputPath,
-              destDir = path.join(srcDir, RELATIVE_DESTINATION_LOCATION);
+              destDir = path.normalize(
+                path.join(srcDir, RELATIVE_DESTINATION_LOCATION)
+              );
             maybeCreateDir(destDir);
-            logger.info(
-              `${PLUGIN_NAME} afterEmit createDir done assets: ${JSON.stringify(
-                compilation.emittedAssets
-              )}`
-            );
+            const re = new RegExp("/", "g");
             compilation.emittedAssets.forEach((item) => {
               const src = path.join(srcDir, item),
-                dst = path.join(destDir, item + ".txt"),
-                containingDir = path.dirname(dst);
+                dstItem = item.replace(re, "-") + ".txt",
+                dst = path.join(destDir, dstItem),
+                tailDir1 = path.basename(srcDir),
+                x = path.basename(destDir),
+                y = path.dirname(destDir),
+                tailDir2 = `${path.basename(y)}/${x}`;
+              // containingDir = path.dirname(dst);
               // const shortDir = path.join(RELATIVE_DESTINATION_LOCATION, item);
-              maybeCreateDir(containingDir);
-              logger.info(`${PLUGIN_NAME} copy ${src} to ${dst}`);
+              // maybeCreateDir(containingDir);
+              logger.info(
+                `${PLUGIN_NAME} copy ${tailDir1}/${item} to [apiproxy]${tailDir2}/${dstItem}`
+              );
               fs.copyFileSync(src, dst);
             });
-
-            // could also run shell commands thusly:
-            // childProcess.exec("command goes here", (_e, stdout, stderr) => {
-            //   if (stdout) process.stdout.write(stdout);
-            //   if (stderr) process.stderr.write(stderr);
-            // });
           });
         }
       }
