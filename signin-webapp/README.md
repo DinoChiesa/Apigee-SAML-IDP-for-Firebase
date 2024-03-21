@@ -13,7 +13,7 @@ if you change the CSS markup, or the HTML , or the JavaScript.
 
 node, npm
 
-These are just used during the build.  They are not involved in the runtime for this webapp. 
+These are used only during the build. They are not involved in the runtime for this webapp.
 
 ### Steps
 
@@ -23,7 +23,14 @@ These are just used during the build.  They are not involved in the runtime for 
    npm install
    ```
 
-2. build
+   This takes a few moments. The instal will need to run some builds.
+   While that is happening is a great time to enjoy a few cleansing breaths.
+
+
+2. build the web app
+
+   This will be very quick.
+
    ```
    npm run devbuild
    ```

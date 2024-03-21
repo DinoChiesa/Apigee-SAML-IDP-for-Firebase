@@ -63,6 +63,14 @@ This code is open source but you don't need to compile it in order to use it.
 
 There are some manual steps required to set up this example.
 
+Pre-requisites:
+
+* the openssl tool
+* a current version of node and npm
+* [apigeecli](https://github.com/apigee/apigeecli/blob/main/docs/apigeecli.md)
+* access to [Google Cloud console](https://console.cloud.google.com)
+
+
 1. create a key and certificate that the Apigee SAML IdP facade will use to sign assertions.
    First create the key:
    ```
@@ -94,8 +102,9 @@ There are some manual steps required to set up this example.
        -o $ORG -e $ENV -t $TOKEN
    ```
 
-3. Set up your Google Cloud Identity Platform as desired, with the providers you
-   want (for example, Google signin, Okta, username/password, etc.).
+3. Sign into console.cloud.google.com , and set up your Google Cloud Identity
+   Platform as desired, with the providers you want (for example, Google signin,
+   Okta, username/password, etc.).
 
    Remember the APIKey and Auth Domain (eg `PROJECT-NAME.firebaseapp.com`) for
    this Identity Platform setup.  You will need this in the next step.
@@ -142,8 +151,6 @@ There are some manual steps required to set up this example.
    | certificate  | upload the certificate you created earlier. |
 
 
-
-
 ## Using it
 
 Visit your Portal page, and click Sign-in.  You should see the SAML Sign in option.
@@ -178,7 +185,6 @@ oriented.
 4. The browser loads this form, and the form auto-submits, posting the SAML
    Response back to the integrated developer portal, to complete the
    authentication.
-
 
 
 ## Limitations

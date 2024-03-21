@@ -1,7 +1,7 @@
 {
-  "name": "api-signin-demo",
-  "version": "1.0.1",
-  "description": "webpack config to build the API Signin demonstration",
+  "name": "web-signin-ux",
+  "version": "1.0.2",
+  "description": "webpack config to build the Sign-in web UI for the SAML IdP Proxy",
   "main": "webpack.config.js",
   "scripts": {
     "build": "rm -rf dist/* && webpack --mode=production --progress --color",
@@ -16,7 +16,6 @@
     "npm": ">= 8.3.0"
   },
   "devDependencies": {
-    "child_process": "^1.0.2",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^6.7.1",
     "filemanager-webpack-plugin": "^8.0.0",
