@@ -2,10 +2,10 @@
 // ------------------------------------------------------------------
 //
 // created: Mon Mar 18 15:40:30 2024
-// last saved: <2024-March-20 18:30:07>
+// last saved: <2024-March-20 18:48:15>
 
 /* jshint esversion:9, node:true, strict:implied */
-/* global process, console, identityPlatformConfig, Buffer */
+/* global process, console, identityPlatformConfig */
 
 import { initializeApp } from "firebase/app";
 import {
@@ -15,11 +15,6 @@ import {
   GoogleAuthProvider
 } from "firebase/auth";
 
-// let identityPlatformConfig = {
-//   apiKey: "AIzaSyDVl39KBTLNY_wDKVVgpRXz2KDRpiXxFAg",
-//   authDomain: "infinite-epoch-2900.firebaseapp.com"
-// };
-//
 const fbapp = initializeApp(identityPlatformConfig);
 const fbauth = getAuth(fbapp);
 
@@ -70,11 +65,9 @@ function onClickSignin(event) {
 
   signInWithPopup(fbauth, IdProvider.Google)
     .then((_result) => {
-      console.log("user is signed in...");
       // const credential = GoogleAuthProvider.credentialFromResult(result);
     })
-    .catch((error) => {
-      console.log("error logging in: " + error.message);
+    .catch((_error) => {
       alert("failed to signin");
     });
 
@@ -92,9 +85,8 @@ function addFirebaseAuthChangeListener() {
     if (user) {
       // a user is Signed in.
       setElementVisibility("signedin", true);
-      debugger;
+      //debugger;
       const authResult = await getAndDecodeAuthResult(user);
-      console.log(JSON.stringify(authResult.payload));
       // on signin, change location to send back the token
       let sess = window.location.hash;
       sess = sess.substr(1, sess.length - 1);
