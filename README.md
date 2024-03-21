@@ -63,13 +63,14 @@ This code is open source but you don't need to compile it in order to use it.
 
 There are some manual steps required to set up this example.
 
-Pre-requisites:
+### Pre-requisites
 
 * the openssl tool
 * a current version of node and npm
 * [apigeecli](https://github.com/apigee/apigeecli/blob/main/docs/apigeecli.md)
 * access to [Google Cloud console](https://console.cloud.google.com)
 
+### Steps
 
 1. create a key and certificate that the Apigee SAML IdP facade will use to sign assertions.
    First create the key:
